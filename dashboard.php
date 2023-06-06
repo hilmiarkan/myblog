@@ -41,32 +41,24 @@ $result = $conn->query($sql);
 
         <div class="post-list height-detail">
           <?php while ($row = $result->fetch_assoc()) : ?>
-
             <div class="post post-row">
-
-              <!-- <div class="dashboard-post-title-desc"> -->
               <a href="post_detail_admin.php?id=<?php echo $row['id']; ?>" style="text-decoration: none; color: inherit;">
                 <span class="post-list-title pointer" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';"><?php echo $row['title']; ?></span>
                 <span class="post-list-desc"><?php echo date("F j, Y", strtotime($row['created_at'])); ?></span>
               </a>
-              <!-- </div> -->
-
               <div class="action-list">
+
                 <button class="edit-button" data-id="<?php echo $row['id']; ?>" data-title="<?php echo htmlspecialchars($row['title'], ENT_QUOTES, 'UTF-8'); ?>" data-content="<?php echo htmlspecialchars($row['content'], ENT_QUOTES, 'UTF-8'); ?>">
                   <img src="/myblog/assets/edit.svg" alt="edit icon" class="icon-edit">
                 </button>
+                
                 <button class="trash-button" data-id="<?php echo $row['id']; ?>">
                   <img src="/myblog/assets/trash.svg" alt="trash icon" class="icon-trash">
                 </button>
-
-
               </div>
-
             </div>
-
           <?php endwhile; ?>
         </div>
-
       </div>
     </div>
 
@@ -178,31 +170,31 @@ $result = $conn->query($sql);
     }
 
     // When the user clicks an edit button, open the edit modal
-for (let editButton of editButtons) {
-  editButton.onclick = function() {
-    var id = this.getAttribute('data-id');
-    var title = this.getAttribute('data-title');
-    var content = this.getAttribute('data-content');
+    for (let editButton of editButtons) {
+      editButton.onclick = function() {
+        var id = this.getAttribute('data-id');
+        var title = this.getAttribute('data-title');
+        var content = this.getAttribute('data-content');
 
-    editModal.querySelector('input[name="id"]').value = id;
-    editModal.querySelector('input[name="title"]').value = title;
-    editModal.querySelector('textarea[name="content"]').value = content;
+        editModal.querySelector('input[name="id"]').value = id;
+        editModal.querySelector('input[name="title"]').value = title;
+        editModal.querySelector('textarea[name="content"]').value = content;
 
-    openModal(editModal);
-  }
-}
+        openModal(editModal);
+      }
+    }
 
 
     // When the user clicks a trash button, open the delete modal
-for (let trashButton of trashButtons) {
-  trashButton.onclick = function() {
-    var id = this.getAttribute('data-id');
+    for (let trashButton of trashButtons) {
+      trashButton.onclick = function() {
+        var id = this.getAttribute('data-id');
 
-    deleteModal.querySelector('input[name="id"]').value = id;
+        deleteModal.querySelector('input[name="id"]').value = id;
 
-    openModal(deleteModal);
-  }
-}
+        openModal(deleteModal);
+      }
+    }
 
     // When the user clicks a cancel button, close the modal
     for (let cancelButton of cancelButtons) {
@@ -214,18 +206,18 @@ for (let trashButton of trashButtons) {
     }
 
     // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (!event.target.closest('.modal') && !isActionButton(event.target) && !isAddButton(event.target)) {
-    closeModal(addModal);
-    closeModal(editModal);
-    closeModal(deleteModal);
-  }
-}
+    window.onclick = function(event) {
+      if (!event.target.closest('.modal') && !isActionButton(event.target) && !isAddButton(event.target)) {
+        closeModal(addModal);
+        closeModal(editModal);
+        closeModal(deleteModal);
+      }
+    }
 
-// Check if the target is an add button
-function isAddButton(target) {
-  return target.closest('#AddButton');
-}
+    // Check if the target is an add button
+    function isAddButton(target) {
+      return target.closest('#AddButton');
+    }
 
 
     // Open a modal
