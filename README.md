@@ -1,6 +1,6 @@
 # My Blog
 
-simple personal blog with cms using php, with read.cv interface styles.
+simple personal blog with cms using php, read.cv interface styles.
 
 ![CleanShot 2023-06-07 at 19 58 56@2x](https://github.com/hilmiarkan/myblog/assets/8338033/b68ab7d7-39d2-4996-8c97-eb8fc2e4eacf)
 ![CleanShot 2023-06-07 at 20 00 10@2x](https://github.com/hilmiarkan/myblog/assets/8338033/88203299-be92-4f4d-8f23-72016e44ab2b)
