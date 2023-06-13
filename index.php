@@ -14,9 +14,9 @@ $result = $conn->query($sql);
 </head>
 
 <?php
-  session_start();
-  if (isset($_SESSION['error'])) {
-    echo "<script type='text/javascript'>
+session_start();
+if (isset($_SESSION['error'])) {
+  echo "<script type='text/javascript'>
             window.onload = function() {
               var toast = document.getElementById('toast');
               toast.classList.remove('hidden');
@@ -25,17 +25,17 @@ $result = $conn->query($sql);
               }, 3000);
             }
           </script>";
-    unset($_SESSION['error']);
-  }
+  unset($_SESSION['error']);
+}
 ?>
 
 
 
 <body>
 
-<div id="toast" class="toast hidden">
-<span class="heading">Username dan atau password yang anda masukkan salah</span>
-</div>
+  <div id="toast" class="toast hidden">
+    <span class="heading">Username dan atau password yang anda masukkan salah</span>
+  </div>
 
   <div class="wrapper">
 
@@ -63,20 +63,31 @@ $result = $conn->query($sql);
 
         <div class="tulisan-my-blog">
           <span class="heading-bold">My Blog</span>
+          <button class="login-button" id="secondbutton">
+            <span id="loginBtn">Login for Admin</span>
+          </button>
         </div>
 
         <div class="post-list height-index">
-    <?php while ($row = $result->fetch_assoc()) : ?>
-      <a href="post_detail.php?id=<?php echo $row['id']; ?>" style="text-decoration: none; color: inherit;">
-        <div class="post post-column pointer">
-            
+          <?php while ($row = $result->fetch_assoc()) : ?>
+            <a href="post_detail.php?id=<?php echo $row['id']; ?>" style="text-decoration: none; color: inherit;">
+              <div class="post post-column pointer">
+
                 <span class="post-list-title"><?php echo $row['title']; ?></span>
                 <span class="post-list-desc"><?php echo date("F j, Y", strtotime($row['created_at'])); ?></span>
-            
+                <?php if (!empty($row['imagepath'])) : ?>
+                  <img class="imagepost" src="<?php echo $row['imagepath']; ?>" alt="<?php echo $row['title']; ?>" />
+                <?php endif; ?>
+              </div>
+            </a>
+          <?php endwhile; ?>
+
+
+
+
+
+
         </div>
-        </a>
-    <?php endwhile; ?>
-</div>
 
 
       </div>
@@ -115,7 +126,7 @@ $result = $conn->query($sql);
       </div>
     </div>
 
-    
+
 
 
   </div>

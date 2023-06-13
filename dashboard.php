@@ -37,6 +37,14 @@ $result = $conn->query($sql);
 
         <div class="tulisan-my-blog">
           <span class="heading-bold">Your Blog List</span>
+          <button class="add-button2" id="AddButton2">
+          <img src="/myblog/assets/add.svg" alt="add icon" class="add-edit">
+        </button>
+        <a class="logout2" href="logout.php">
+            <button class="login-button2">
+              <span id="loginBtn">Log Out</span>
+            </button>
+          </a>
         </div>
 
         <div class="post-list height-detail">
@@ -80,7 +88,7 @@ $result = $conn->query($sql);
 
     <div id="add-modal" class="modal">
       <div class="mau-form">
-        <form method="post" action="add_post.php">
+      <form action="add_post.php" method="post" enctype="multipart/form-data">
 
           <div class="login-modal-title-desc">
             <span class="login-modal-title">Buat post baru</span>
@@ -88,6 +96,8 @@ $result = $conn->query($sql);
 
           <input type="text" name="title" placeholder="Title" required>
           <textarea name="content" placeholder="Content" rows="5" required></textarea>
+          <input type="file" name="image">
+
 
           <div class="login-modal-two-button">
             <button class="login-modal-button-cancel">Cancel</button>
@@ -158,6 +168,7 @@ $result = $conn->query($sql);
 
     // Get the buttons that open the modals
     var addButton = document.getElementById("AddButton");
+    var addButton2 = document.getElementById("AddButton2");
     var editButtons = document.getElementsByClassName("edit-button");
     var trashButtons = document.getElementsByClassName("trash-button");
 
@@ -166,6 +177,9 @@ $result = $conn->query($sql);
 
     // When the user clicks the add button, open the add modal
     addButton.onclick = function(event) {
+      openModal(addModal);
+    }
+    addButton2.onclick = function(event) {
       openModal(addModal);
     }
 
@@ -217,6 +231,11 @@ $result = $conn->query($sql);
     // Check if the target is an add button
     function isAddButton(target) {
       return target.closest('#AddButton');
+    }
+
+    // Check if the target is an add button
+    function isAddButton(target) {
+      return target.closest('#AddButton2');
     }
 
 
